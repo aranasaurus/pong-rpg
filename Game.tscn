@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Ball.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Paddle.tscn" type="PackedScene" id=2]
+
+[sub_resource type="LineShape2D" id=1]
+normal = Vector2( 0, 1 )
+
+[sub_resource type="LineShape2D" id=2]
+
+[sub_resource type="LineShape2D" id=3]
+normal = Vector2( 1, 0 )
+
+[sub_resource type="LineShape2D" id=4]
+normal = Vector2( -1, 0 )
+
+[node name="Game" type="Node2D"]
+
+[node name="Court" type="ColorRect" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Top" type="StaticBody2D" parent="Court"]
+position = Vector2( 1024, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Court/Top"]
+shape = SubResource( 1 )
+
+[node name="Bottom" type="StaticBody2D" parent="Court"]
+position = Vector2( 0, 600 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Court/Bottom"]
+shape = SubResource( 2 )
+
+[node name="Left" type="StaticBody2D" parent="Court"]
+position = Vector2( 0, 300 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Court/Left"]
+shape = SubResource( 3 )
+
+[node name="Right" type="StaticBody2D" parent="Court"]
+position = Vector2( 1024, 300 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Court/Right"]
+shape = SubResource( 4 )
+
+[node name="Ball" parent="." instance=ExtResource( 1 )]
+position = Vector2( 540, 300 )
+velocity = Vector2( 200, -100 )
+
+[node name="Paddle" parent="." instance=ExtResource( 2 )]
+position = Vector2( 58.4226, 300.122 )
